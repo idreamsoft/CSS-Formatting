@@ -7,6 +7,16 @@
   "engines": {
     "vscode": "^1.40.0"
   },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/idreamsoft/css-format-st3/issues",
+    "email": "master@icmsdev.com"
+  },
+  "homepage": "https://github.com/idreamsoft/css-format-st3/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/idreamsoft/css-format-st3"
+  },
   "categories": [
     "Formatters"
   ],
