@@ -1,0 +1,240 @@
+{
+  "name": "css-format-st3",
+  "displayName": "CSS Format ST3",
+  "description": "CSS Format is a CSS formatting plugin for Sublime Text, you can convert CSS/SASS/SCSS/LESS code to Expanded, Compact or Compressed format. CSS Format is just only a formatter, do not supports grammar check and auto correct feature.",
+  "version": "0.0.1",
+  "publisher": "icmsdev",
+  "engines": {
+    "vscode": "^1.40.0"
+  },
+  "categories": [
+    "Formatters"
+  ],
+  "keywords": [
+    "formatter",
+    "css formatter",
+    "less formatter",
+    "scss formatter",
+    "sass formatter"
+  ],
+  "activationEvents": [
+    "onLanguage:css",
+    "onLanguage:sass",
+    "onLanguage:scss",
+    "onLanguage:less"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "CSS Format ST3",
+      "properties": {
+        "cssFormatSt3.formattingAction": {
+          "type": "string",
+          "enum": [
+            "compact",
+            "compact-ns",
+            "compact-bs",
+            "compact-bs-ns",
+            "compress",
+            "expand",
+            "expand-bs"
+          ],
+          "enumItemLabels": [
+            "Compact",
+            "Compact (No Spaces)",
+            "Compact (Break Selectors)",
+            "Compact (Break Selectors, No Spaces)",
+            "Compressed",
+            "Expanded",
+            "Expanded (Break Selectors)"
+          ],
+          "title": "Formatting Action",
+          "default": "expand",
+          "description": "Document Formatting Action"
+        },
+        "cssFormatSt3.indentation": {
+          "type": "string",
+          "title": "Code Indentation",
+          "default": "\t",
+          "description": "Code Indentation (default:\\t)"
+        },
+        "cssFormatSt3.expandBlockBreak": {
+          "type": "string",
+          "default": "\n\n",
+          "description": "Block Break (Expand Mode Only) (default:\\n\\n)"
+        },
+        "cssFormatSt3.formatOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Format on Save"
+        },
+        "cssFormatSt3.formatOnSaveAction": {
+          "type": "string",
+          "enum": [
+            "compact",
+            "compact-ns",
+            "compact-bs",
+            "compact-bs-ns",
+            "compress",
+            "expand",
+            "expand-bs"
+          ],
+          "enumItemLabels": [
+            "Compact",
+            "Compact (No Spaces)",
+            "Compact (Break Selectors)",
+            "Compact (Break Selectors, No Spaces)",
+            "Compressed",
+            "Expanded",
+            "Expanded (Break Selectors)"
+          ],
+          "default": "expand",
+          "description": "On Save Action"
+        },
+        "cssFormatSt3.formatOnSaveFilter": {
+          "type": "string",
+          "default": "css|sass|scss|less",
+          "description": "On Save File Filter"
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "css-format-st3.expand",
+        "key": "ctrl+alt+f e",
+        "mac": "cmd+alt+f e",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "css-format-st3.compact",
+        "key": "ctrl+alt+f c",
+        "mac": "cmd+alt+f c",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "css-format-st3.compress",
+        "key": "ctrl+alt+f s",
+        "mac": "cmd+alt+f s",
+        "when": "editorTextFocus"
+      }
+    ],
+    "commands": [
+      {
+        "command": "css-format-st3.expand",
+        "title": "Expanded",
+        "category": "CSS Format ST3"
+      },
+      {
+        "command": "css-format-st3.expand-bs",
+        "title": "Expanded (Break Selectors)",
+        "category": "CSS Format ST3"
+      },
+      {
+        "command": "css-format-st3.compact",
+        "title": "Compact",
+        "category": "CSS Format ST3"
+      },
+      {
+        "command": "css-format-st3.compact-ns",
+        "title": "Compact (No Spaces)",
+        "category": "CSS Format ST3"
+      },
+      {
+        "command": "css-format-st3.compact-bs",
+        "title": "Compact (Break Selectors)",
+        "category": "CSS Format ST3"
+      },
+      {
+        "command": "css-format-st3.compact-bs-ns",
+        "title": "Compact (Break Selectors, No Spaces)",
+        "category": "CSS Format ST3"
+      },
+      {
+        "command": "css-format-st3.compress",
+        "title": "Compressed",
+        "category": "CSS Format ST3"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "submenu": "css-format-st3.editor.context",
+          "when": "resourceExtname  =~ /\\.(css|sass|scss|less|html|php)/i",
+          "group": "css-format-st3"
+        }
+      ],
+      "css-format-st3.editor.context": [
+        {
+          "command": "css-format-st3.expand",
+          "title": "Expanded",
+          "group": "css-format-st3"
+        },
+        {
+          "command": "css-format-st3.expand-bs",
+          "title": "Expanded (Break Selectors)",
+          "group": "css-format-st3"
+        },
+        {
+          "command": "css-format-st3.compact",
+          "title": "Compact",
+          "group": "css-format-st3"
+        },
+        {
+          "command": "css-format-st3.compact-ns",
+          "title": "Compact (No Spaces)",
+          "group": "css-format-st3"
+        },
+        {
+          "command": "css-format-st3.compact-bs",
+          "title": "Compact (Break Selectors)",
+          "group": "css-format-st3"
+        },
+        {
+          "command": "css-format-st3.compact-bs-ns",
+          "title": "Compact (Break Selectors, No Spaces)",
+          "group": "css-format-st3"
+        },
+        {
+          "command": "css-format-st3.compress",
+          "title": "Compressed",
+          "group": "css-format-st3"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "css-format-st3.editor.context",
+        "label": "CSS Format"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/js-beautify": "^1.13.3",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.76.0",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "@vscode/test-electron": "^2.2.3",
+    "eslint": "^8.34.0",
+    "glob": "^8.1.0",
+    "js-beautify": "^1.14.7",
+    "mocha": "^10.2.0",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.5",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
