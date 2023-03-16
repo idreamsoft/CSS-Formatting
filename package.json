@@ -2,7 +2,7 @@
   "name": "css-format-st3",
   "displayName": "CSS Format ST3",
   "description": "CSS Format is a CSS formatting plugin for Sublime Text, you can convert CSS/SASS/SCSS/LESS code to Expanded, Compact or Compressed format. CSS Format is just only a formatter, do not supports grammar check and auto correct feature.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icon": "icons/icon128.png",
   "publisher": "idreamsoft",
   "engines": {
