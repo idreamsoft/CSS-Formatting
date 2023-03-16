@@ -11,8 +11,14 @@ export function format(content: string, action: string, document: vscode.TextDoc
 	const languageId = document.languageId;
 
 	if (languageId === 'html' || languageId === 'php') {
-		vscode.window.showInformationMessage('Please select content before choosing non-style file.');
-		return content;
+		const editor = vscode.window.activeTextEditor;
+		if (editor) {
+			const selection = editor.selection;
+			if (selection.isEmpty) {
+				vscode.window.showInformationMessage('Please select content before choosing non-style file.');
+				return content;
+			}
+		}
 	}
 
 	let beutifyOptions: jsbeautify.CSSBeautifyOptions = {
@@ -39,15 +45,16 @@ export function regActionFunc(action: string) {
 		const editor = vscode.window.activeTextEditor;
 		if (editor) {
 			const document = editor.document;
-			let text = document.getText(editor.selection);
+			const selection = editor.selection;
 			let range: vscode.Range;
 
-			if (text.length > 0) {
-				range = editor.selection;
-			} else {
-				text = document.getText();
+			if (selection.isEmpty) {
 				range = new vscode.Range(0, 0, document.lineCount, 0);
+			} else {
+				range = editor.selection;
 			}
+			
+			let text = document.getText(range);
 			let formatted = format(text, action, document);
 
 			editor.edit((editBuilder) => {
@@ -113,7 +120,7 @@ export function activate(context: vscode.ExtensionContext) {
 			// console.log('onWillSaveTextDocument', false);
 			return;
 		}
-		
+
 		vscode.window.showInformationMessage('css-format-st3.formatOnSave');
 
 		let text = document.getText();
