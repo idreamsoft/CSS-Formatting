@@ -7,10 +7,7 @@ class CssFormater {
         this.indentation = indentation;
         this.expandBlockBreak = expandBlockBreak;
     }
-
     run(code: string, action = "compact") {
-
-
         type actKey = Record<string, Function>;
         var actFuns: actKey = {
             "expand": this.expand_rules,
@@ -91,8 +88,8 @@ class CssFormater {
             }
             code = this.indentCode(code);
         }
-
         for (let i = 0; i < strings.length; i++) {
+            strings[i] = strings[i].trim();
             code = code.replace("!string!", strings[i]);
         }
 
@@ -101,8 +98,8 @@ class CssFormater {
         }
 
         code = code.replace(/^\s*(\S+(\s+\S+)*)\s*$/g, "$1");
-        console.log(/compact/.test(action));
-        
+        // console.log(/compact/.test(action));
+
         if (/compact/.test(action)) {
             code = code.replace(/^\s+/gm, "");
         }
@@ -122,7 +119,8 @@ class CssFormater {
 
     compact_rules(code: string) {
         code = code.replace(/\{/g, " { ");
-        code = code.replace(/(@[\w-]*(document|font-feature-values|keyframes|media|supports)[^;]*?\{)\s*/, '$1\n');
+        code = code.replace(/@/g, "\n@");
+        code = code.replace(/(@[\w-]*(document|font-feature-values|keyframes|media|supports)[^;]*?\{)\s*/g, '$1\n');
         code = code.replace(/;/g, "; ");
         code = code.replace(/(@(charset|import|namespace).+?;)\s*/, '$1\n');
         code = code.replace(/;\s*([^\};]+?\{)/, ';\n$1');
